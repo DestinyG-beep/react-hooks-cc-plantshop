@@ -8,11 +8,21 @@ function PlantList({ plants, setPlants, result }) {
       .then(res => res.json())
       .then(data => setPlants(data))
   }, [])
+  
+  const filteredPlants = result === "" ?
+    [...plants] :
+    plants.filter(plants.name(.includes(result())))
 
- 
+    function outputPlants() {
+      return result.map(plant => {
+        return <PlantCard key={plant.id} plant={plant}/>
+      })
+    }
 
   return (
-    <ul className="cards">{/* render PlantCards components in here */}</ul>
+    <ul className="cards">
+      {outputPlants()}
+    </ul>
   );
 }
 

@@ -7,9 +7,9 @@ function PlantCard() {
   const handleClick = () => {
     inStock(!whetherStocked)
   };
-  
+
   return (
-    <li className="card" data-testid="plant-item">
+    <li className="card" data-testid="plant-item" key={plant.id}>
       <img src={"plant.image"} alt={"plant.name"} />
       <h4>{"plant.name"}</h4>
       <p>Price: {"plant.price"}</p>
