@@ -1,27 +1,18 @@
-import React, {useEffect} from "react";
+import React from "react";
 import PlantCard from "./PlantCard";
 
-function PlantList({ plants, setPlants, result }) {
-  
-  useEffect(() => {
-    fetch("http://localhost:6001/plants")
-      .then(res => res.json())
-      .then(data => setPlants(data))
-  }, [])
-  
-  const filteredPlants = result === "" ?
-    [...plants] :
-    plants.filter(plants.name(.includes(result())))
-
-    function outputPlants() {
-      return result.map(plant => {
-        return <PlantCard key={plant.id} plant={plant}/>
-      })
-    }
-
+function PlantList({ plants }) {
   return (
-    <ul className="cards">
-      {outputPlants()}
+    <ul className="cards">{
+    plants.map((plant)=>
+      <PlantCard 
+        key={plant.id}
+        id={plant.id}
+        image={plant.image}
+        name={plant.name}
+        price={plant.price}
+      />
+    )}
     </ul>
   );
 }
